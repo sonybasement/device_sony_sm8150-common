@@ -45,8 +45,8 @@
         <library name="volume_listener" path="libvolumelistener.so"/>
         <library name="audiosphere" path="libasphere.so"/>
         <library name="shoebox" path="libshoebox.so"/>
+        <library name="sonyeffect_sw" path="libsonysweffect.so"/>
         <library name="znrwrapper" path="libznrwrapper.so"/>
-        <library name="dnnr" path="libdnnrwrapper.so"/>
         <!--DOLBY DAP-->
         <library name="dap" path="libswdap.so"/>
         <!--DOLBY END-->
@@ -70,8 +70,8 @@
         <effect name="music_helper" library="volume_listener" uuid="08b8b058-0590-11e5-ac71-0025b32654a0"/>
         <effect name="audiosphere" library="audiosphere" uuid="184e62ab-2d19-4364-9d1b-c0a40733866c"/>
         <effect name="shoebox" library="shoebox" uuid="1eab784c-1a36-4b2a-b7fc-e34c44cab89e"/>
+        <effect name="sonyeffect" library="sonyeffect_sw" uuid="50786e95-da76-4557-976b-7981bdf6feb9"/>
         <effect name="ZNR" library="znrwrapper" uuid="b8a031e0-6bbf-11e5-b9ef-0002a5d5c51b"/>
-        <effect name="DNNR" library="dnnr" uuid="fa3cce18-254f-4573-bcec-6bd279476034"/>
         <!--DOLBY DAP-->
         <effect name="dap" library="dap" uuid="9d4921da-8225-4f29-aefa-39537a04bcaa"/>
         <!--DOLBY END-->
@@ -88,11 +88,9 @@
         </stream>
         <stream type="mic">
             <apply effect="ZNR"/>
-            <apply effect="DNNR"/>
         </stream>
         <stream type="camcorder">
             <apply effect="ZNR"/>
-            <apply effect="DNNR"/>
         </stream>
     </preprocess>
 </audio_effects_conf>

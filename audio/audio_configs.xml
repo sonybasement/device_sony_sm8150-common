@@ -37,7 +37,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <property name="persist.vendor.audio.va_concurrency_enabled" value="false"/>
         <property name="vendor.audio.av.streaming.offload.enable" value="false"/>
         <property name="vendor.audio.offload.track.enable" value="false"/>
-        <property name="vendor.audio.offload.multiple.enabled" value="true"/>
+        <property name="vendor.audio.offload.multiple.enabled" value="false"/>
         <property name="vendor.audio.rec.playback.conc.disabled" value="false"/>
         <property name="vendor.voice.conc.fallbackpath" value=""/>
         <property name="vendor.voice.dsd.playback.conc.disabled" value="true"/>
@@ -57,7 +57,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- AV Configs -->
         <property name="vendor.audio.use.sw.alac.decoder" value="true"/>
         <property name="vendor.audio.use.sw.ape.decoder" value="true"/>
-        <property name="vendor.audio.use.sw.mpegh.decoder" value="true"/>
+        <property name="vendor.audio.use.sw.mpegh.decoder" value="false"/>
         <property name="vendor.audio.flac.sw.decoder.24bit" value="true"/>
         <property name="vendor.audio.hw.aac.encoder" value="false"/>
         <flag name="aac_adts_offload_enabled" value="true" />
