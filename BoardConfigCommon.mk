@@ -66,8 +66,8 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom \
     loop.max_part=16 \
     androidboot.usbcontroller=a600000.dwc3  \
     buildid=KUMANO-1.2.0-210818-1151 \
-    BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive \
     panic_on_err=1
+    
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
