@@ -1,4 +1,4 @@
-<manifest version="2.0" type="device" target-level="4">
+<manifest version="2.0" type="device" target-level="5">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -403,10 +403,5 @@
         <name>vendor.somc.hardware.swiqi</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IHidlSwiqi/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.graphics.composer</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.1::IComposer/default</fqname>
     </hal>
 </manifest>

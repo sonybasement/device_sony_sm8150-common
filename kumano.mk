@@ -22,7 +22,6 @@ $(call inherit-product, vendor/sony/sm8150-common/sm8150-common-vendor.mk)
 
 # VNDK
 PRODUCT_SHIPPING_API_LEVEL := 28
-PRODUCT_TARGET_VNDK_VERSION := 30
 PRODUCT_USE_PRODUCT_VNDK_OVERRIDE := true
 
 # Additional native libraries
@@ -230,8 +229,10 @@ PRODUCT_PACKAGES += \
 
 # Configstore
 PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.0-service \
     android.hardware.configstore@1.1-service 
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.adb.secure=0
 
 # Display
 PRODUCT_PACKAGES += \
@@ -239,12 +240,13 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     libtinyxml \
     libvulkan \
-    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     gralloc.msmnile \
+    hwcomposer.msmnile \
     libdisplayconfig.qti \
     libdisplayconfig.system.qti \
     libqdMetaData \
@@ -380,7 +382,6 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    init.qti.media.sh \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
