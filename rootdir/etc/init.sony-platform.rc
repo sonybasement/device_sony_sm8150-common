@@ -12,7 +12,30 @@ on early-init
         sony_camera \
         tcs3490 \
         flash_led \
-        camera_sync
+        camera_sync \
+        pinctrl_wcd_dlkm \
+        swr_dlkm \
+        swr_ctrl_dlkm \
+        native_dlkm \
+        q6_dlkm \
+        usf_dlkm \
+        adsp_loader_dlkm \
+        q6_pdr_dlkm \
+        q6_notifier_dlkm \
+        apr_dlkm \
+        wglink_dlkm \
+        wcd934x_dlkm \
+        wcd9360_dlkm \
+        wcd_core_dlkm \
+        wcd9xxx_dlkm \
+        wsa881x_dlkm \
+        stub_dlkm \
+        wcd_cpe_dlkm \
+        wcd_spi_dlkm \
+        mbhc_dlkm \
+        hdmi_dlkm \
+        platform_dlkm \
+        machine_dlkm
 
     
     write /sys/module/msm_rtb/parameters/enable 0
