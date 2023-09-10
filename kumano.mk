@@ -24,10 +24,6 @@ $(call inherit-product, vendor/sony/sm8150-common/sm8150-common-vendor.mk)
 PRODUCT_SHIPPING_API_LEVEL := 28
 PRODUCT_USE_PRODUCT_VNDK_OVERRIDE := true
 
-# Additional native libraries
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -342,10 +338,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
 
 # Media
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
-    $(LOCAL_PATH)/configs/media_codecs_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor.xml
-
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
