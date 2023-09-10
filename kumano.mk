@@ -184,14 +184,24 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.5.vendor \
-    android.hardware.camera.provider@2.6.vendor \
     android.hardware.camera.common@1.0.vendor \
-    vendor.qti.hardware.camera.postproc@1.0.vendor
+    android.hardware.camera.device@3.5.vendor \
+    android.hardware.camera.provider@2.4.vendor \
+    vendor.qti.hardware.camera.postproc@1.0.vendor \
+    libcamera2ndk_vendor \
+    libdng_sdk.vendor \
+    libgui_vendor \
+    libstdc++.vendor
 
 # Charger
 # PRODUCT_PACKAGES += \
     vendor.semc.hardware.charger@1.0.vendor
+
+# Codec
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0.vendor \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -305,7 +315,10 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0.vendor \
     android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
+    android.hidl.memory@1.0.vendor \
     libhidltransport.vendor \
     libhwbinder.vendor
 
@@ -409,7 +422,7 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.4.vendor \
+    android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     libprotobuf-cpp-full \
