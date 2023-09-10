@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2012-2013,2016,2018-2020 The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013,2016,2018,2019 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -311,7 +311,6 @@ case "$target" in
     "kona")
         case "$soc_hwplatform" in
             *)
-                setprop vendor.media.target_variant "_kona"
                 if [ $fb_width -le 1600 ]; then
                     setprop vendor.display.lcd_density 560
                 else
@@ -321,43 +320,18 @@ case "$target" in
         esac
         ;;
     "lito")
-        case "$soc_hwid" in
-            400|440)
+        case "$soc_hwplatform" in
+            *)
                 sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc1/sku_version` 2> /dev/null
                 if [ $sku_ver -eq 1 ]; then
                     setprop vendor.media.target.version 1
                 fi
-                ;;
-            434|459)
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc1/sku_version` 2> /dev/null
-                setprop vendor.media.target.version 2
-                if [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.target.version 3
-                fi
-                ;;
-        esac
-        ;;
-    "bengal")
-        case "$soc_hwid" in
-            441)
-                setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
-                setprop vendor.gralloc.disable_ubwc 1
-                ;;
-            471)
-                #scuba APQ
-                setprop vendor.gralloc.disable_ubwc 1
                 ;;
         esac
         ;;
     "sdm710" | "msmpeafowl")
         case "$soc_hwplatform" in
             *)
-                if [ $fb_width -le 1600 ]; then
-                    setprop vendor.display.lcd_density 560
-                else
-                    setprop vendor.display.lcd_density 640
-                fi
-
                 sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc1/sku_version` 2> /dev/null
                 if [ $sku_ver -eq 1 ]; then
                     setprop vendor.media.target.version 1
@@ -380,38 +354,10 @@ case "$target" in
     #Set property to differentiate SDM660 & SDM455
     #SOC ID for SDM455 is 385
     "sdm660")
-        case "$soc_hwplatform" in
-            *)
-                if [ $fb_width -le 1600 ]; then
-                    setprop vendor.display.lcd_density 560
-                else
-                    setprop vendor.display.lcd_density 640
-                fi
-
-                if [ $soc_hwid -eq 385 ]; then
-                    setprop vendor.media.target.version 1
-                fi
-                ;;
-        esac
-        ;;
-    "lahaina")
         case "$soc_hwid" in
-            450)
-                setprop vendor.media.target_variant "_shima_v3"
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc/sku_version` 2> /dev/null
-                if [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.target_variant "_shima_v1"
-                elif [ $sku_ver -eq 2 ]; then
-                    setprop vendor.media.target_variant "_shima_v2"
-                fi
-                ;;
-            *)
-                setprop vendor.media.target_variant "_lahaina"
-                ;;
+           385)
+               setprop vendor.media.target.version 1
         esac
-        ;;
-    "holi")
-        setprop vendor.media.target_variant "_holi"
         ;;
 esac
 
@@ -447,21 +393,6 @@ case "$product" in
 esac
 case "$product" in
         "sm6150_au")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
-case "$product" in
-        "sdmshrike_au")
-         setprop vendor.display.lcd_density 160
-         ;;
-        *)
-        ;;
-esac
-
-case "$product" in
-        "msmnile_gvmq")
          setprop vendor.display.lcd_density 160
          ;;
         *)

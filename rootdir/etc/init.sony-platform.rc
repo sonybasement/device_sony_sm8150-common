@@ -5,12 +5,16 @@
 
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ \
+        last_logs \
+        powerkey_forcecrash \
+        bu520x1nvx \
         et580-int \
         sony_camera \
         tcs3490 \
         flash_led \
         camera_sync
 
+    
     write /sys/module/msm_rtb/parameters/enable 0
 
     # change the compression algorithm for zRAM
@@ -55,15 +59,6 @@ on init
 
     # Create directory for hdcp-sdk
     
-
-    # Add a cpuset for the camera daemon
-    # We want all cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus 0-7
-    write /dev/cpuset/camera-daemon/mems 0
-    chown cameraserver cameraserver /dev/cpuset/camera-daemon
-    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
-    chmod 0660 /dev/cpuset/camera-daemon/tasks
 
 # Set SD card clock gating delay to 1ms
 on fs
@@ -116,19 +111,11 @@ on post-fs
     chown system graphics /dev/graphics/fb2
 
     # Transfer sensor json files
-    restorecon_recursive /mnt/vendor/persist/sensors
     chown system system /mnt/vendor/persist/sensors
-    exec u:r:vendor_qti_init_shell:s0 system -- /vendor/bin/sensors_json_transfer.sh
+    exec u:r:qti_init_shell:s0 system -- /vendor/bin/sensors_json_transfer.sh
 
     # Update dm-verity state and set partition.*.verified properties
     verity_update_state
-
-    # DeviceMonitor UFSInfo
-    chown system system /sys/kernel/debug/1d84000.ufshc/dump_device_desc
-    chown system system /sys/kernel/debug/1d84000.ufshc/dump_device_health_desc
-
-    # Sensor
-    exec - system system -- /vendor/bin/somc_reg_update
 
 on boot
     write /proc/sys/vm/dirty_ratio 5
@@ -137,12 +124,6 @@ on boot
     chmod 0660 /sys/devices/virtual/water_detection/wdet/wdet_polling_restart
     chown system audio /sys/class/leds/vibrator/activate
     chmod 0660 /sys/class/leds/vibrator/activate
-
-    # USB
-    chown root system /config/usb_gadget/g1
-
-    #Start fingerprimt HAL service
-    start ets_hal
 
 on post-fs-data
 # backlight
@@ -155,9 +136,6 @@ on post-fs-data
     chown system system /sys/class/leds/vibrator/wf_rep_count
     chown system system /sys/class/leds/vibrator/wf_s_rep_count
     chown system system /sys/class/leds/vibrator/lra_auto_mode
-
-    chown audioserver audio /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,haptics@c000/activate
-    chmod 0664 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,haptics@c000/activate
 
 # create directory for wfd
     mkdir /data/vendor/wfd 0770 system system
@@ -189,43 +167,8 @@ on post-fs-data
     chmod 0660 /sys/power/wake_lock
     chmod 0660 /sys/power/wake_unlock
 
-    # chargemon use various sysfs entries before on boot, so add permission here.
-    chown system system /sys/power/state
-    chmod 0660 /sys/power/state
-
-    # limiting power-off mode charging usb current at full state
-
-    ### modifying governor
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-
-    ### limiting max scaling frequency
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
-
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
-
-    ### putting cpus 4 to 7 offline
-    chown system system /sys/devices/system/cpu/cpu4/online
-    chown system system /sys/devices/system/cpu/cpu5/online
-    chown system system /sys/devices/system/cpu/cpu6/online
-    chown system system /sys/devices/system/cpu/cpu7/online
-
-    chmod 0660 /sys/devices/system/cpu/cpu4/online
-    chmod 0660 /sys/devices/system/cpu/cpu5/online
-    chmod 0660 /sys/devices/system/cpu/cpu6/online
-    chmod 0660 /sys/devices/system/cpu/cpu7/online
-
-    ### isolate cpus 4 to 7
-    chown system system /sys/devices/system/cpu/cpu4/isolate
-    chown system system /sys/devices/system/cpu/cpu5/isolate
-    chown system system /sys/devices/system/cpu/cpu6/isolate
-    chown system system /sys/devices/system/cpu/cpu7/isolate
-
-    chmod 0660 /sys/devices/system/cpu/cpu4/isolate
-    chmod 0660 /sys/devices/system/cpu/cpu5/isolate
-    chmod 0660 /sys/devices/system/cpu/cpu6/isolate
-    chmod 0660 /sys/devices/system/cpu/cpu7/isolate
+    # chargemon use autosleep before on boot, so add permission here.
+    chown system system /sys/power/autosleep
 
     # charge_service
     
@@ -337,16 +280,36 @@ on post-fs-data
     restorecon /sys/devices/virtual/input/rgbcir_sensor/chip_pow
     restorecon /sys/devices/virtual/input/rgbcir_sensor/notify
 
-    # Camera to enable system crash from DSP
-    
-
-    # WLAN
-    # Set default Wi-Fi country code as "00". It can be overridden by customization.
-    setprop ro.boot.wificountrycode 00
-
 # Audio Sony Effect tuning parameter setting device
     chown system audio /dev/sony_hweffect_params
     chmod 0660 /dev/sony_hweffect_params
+
+# DRM widevine
+service wvkbd_installer /vendor/bin/wvkbd
+    class late_start
+    user system
+    group system
+    oneshot
+
+on property:vendor.fingerprint.hwid=0603
+    setprop vendor.fingerprint.ready true
+    start ets_hal
+
+on property:ro.boot.verifiedbootstate=orange
+    setprop persist.sys.usb.config adb
+
+# Set value in property to sysfs for LRC mode
+on property:persist.vendor.battery.charge=0
+    write /sys/class/power_supply/battery/lrc_enable 0
+    write /sys/class/power_supply/battery_ext/lrc_enable 0
+    write /sys/class/power_supply/battery_ext/lrc_socmax 0
+    write /sys/class/power_supply/battery_ext/lrc_socmin 0
+
+on property:persist.vendor.battery.charge=1
+    write /sys/class/power_supply/battery_ext/lrc_socmax 60
+    write /sys/class/power_supply/battery_ext/lrc_socmin 40
+    write /sys/class/power_supply/battery_ext/lrc_enable 1
+    write /sys/class/power_supply/battery/lrc_enable 1
 
 # Charge service
 service charge_service /vendor/bin/charge_service
@@ -398,6 +361,24 @@ on property:persist.vendor.displayport.hlg_support=1
 on property:persist.vendor.displayport.hlg_support=0
     write /sys/module/drm/parameters/edid_hdr_hlg_support 0
 
+# Assure Bluetooth A2DP hardware offload is not disabled (JIML-163845)
+# This is only needed in Q AND only for products that have run on P.
+on property:persist.bluetooth.a2dp_offload.disabled=true
+    setprop persist.bluetooth.a2dp_offload.disabled false
+
 # Set value in ro.boot.product.hardware.sku to model
 on property:ro.product.model=*
     setprop ro.boot.product.hardware.sku ${ro.product.model}
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
+
+# Set value to systemproperty for log level of ConnectivityManager and ConnectivityService.
+on boot && property:ro.build.type=userdebug
+    setprop log.tag.ConnectivityManager DEBUG
+    setprop log.tag.ConnectivityService DEBUG

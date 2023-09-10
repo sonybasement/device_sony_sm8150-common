@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 # Copyright (C) 2018 Sony Mobile Communications Inc.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -31,27 +31,7 @@
 #
 
 on early-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules \
-    audio_wglink \
-    audio_q6_pdr \
-    audio_q6_notifier \
-    audio_apr \
-    audio_adsp_loader \
-    audio_q6 \
-    audio_native \
-    audio_usf \
-    audio_pinctrl_wcd \
-    audio_swr \
-    audio_platform \
-    audio_hdmi \
-    audio_wcd_spi \
-    audio_stub \
-    audio_wcd_core \
-    audio_wsa881x \
-    audio_wcd9360 \
-    audio_hdmi \
-    audio_machine_msmnile
-    
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_wcd9360 audio_hdmi audio_machine_msmnile
     write /proc/sys/kernel/sched_boost 1
     symlink /data/tombstones /tombstones
 
@@ -75,7 +55,7 @@ on fs
     mount_all /vendor/etc/fstab.qcom --early
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
-    restorecon_recursive /mnt/vendor/persist
+    restorecon_recursive --force /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
 
 on post-fs
@@ -152,7 +132,7 @@ on property:vendor.usb.controller=*
     setprop sys.usb.controller ${vendor.usb.controller}
 
 #Load WLAN driver
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko country_code=${ro.boot.wificountrycode}
+    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
@@ -211,16 +191,24 @@ service vendor.lowi /vendor/bin/sscrpcd
    group system wakelock
    capabilities BLOCK_SUSPEND
 
+service vendor.mdm_helper /vendor/bin/mdm_helper
+    class core
+    group system wakelock oem_2997 oem_2993
+    disabled
+
 service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
     class main
     oneshot
 
-service dcvs-sh /vendor/bin/init.qti.dcvs.sh
-    class late_start
-    user root
-    group root system
+service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
+    class main
+    user system
+    group system wifi inet sdcard_rw media_rw diag
     disabled
     oneshot
 
-on property:vendor.dcvs.prop=1
-   start dcvs-sh
+service vendor.energy-awareness /vendor/bin/energy-awareness
+    class main
+    user system
+    group system
+    oneshot
