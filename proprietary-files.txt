@@ -1222,6 +1222,26 @@ vendor/lib64/vendor.qti.hardware.soter@1.0.so
 vendor/lib64/vendor.somc.hardware.miscta@1.0.so
 vendor/lib64/vendor.somc.hardware.security.secd@1.0.so
 
+# SECD firmware
+vendor/etc/firmware/tzsuntory.b00
+vendor/etc/firmware/tzsuntory.b01
+vendor/etc/firmware/tzsuntory.b02
+vendor/etc/firmware/tzsuntory.b03
+vendor/etc/firmware/tzsuntory.b04
+vendor/etc/firmware/tzsuntory.b05
+vendor/etc/firmware/tzsuntory.b06
+vendor/etc/firmware/tzsuntory.b07
+vendor/etc/firmware/tzsuntory.mdt
+vendor/etc/firmware/tztpm.b00
+vendor/etc/firmware/tztpm.b01
+vendor/etc/firmware/tztpm.b02
+vendor/etc/firmware/tztpm.b03
+vendor/etc/firmware/tztpm.b04
+vendor/etc/firmware/tztpm.b05
+vendor/etc/firmware/tztpm.b06
+vendor/etc/firmware/tztpm.b07
+vendor/etc/firmware/tztpm.mdt
+
 # Sensors
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/sensors.qti
