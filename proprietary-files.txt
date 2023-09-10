@@ -538,6 +538,7 @@ vendor/lib64/libhdr_tm.so
 vendor/lib/libqservice.so
 vendor/lib64/libdisplayqos.so
 vendor/lib64/libqseed3.so
+vendor/lib64/libsdedrm.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-colormgr-algo.so
 vendor/lib64/libsdm-diag.so
@@ -582,7 +583,10 @@ vendor/etc/qdcm_calib_data_td4330_video_mode_dsi_truly_panel.xml
 # Display postprocessing
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/ppd
+vendor/bin/qdcmss
+vendor/etc/init/qdcmss.rc
 vendor/etc/init/vendor.display.color@1.0-service.rc
+vendor/lib/libdisp-aba.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
