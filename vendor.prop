@@ -13,6 +13,7 @@ persist.vendor.audio.fluence.speaker=true
 persist.vendor.audio.spv3.enable=true
 persist.vendor.audio.avs.afe_api_version=2
 persist.vendor.audio.ras.enabled=true
+persist.vendor.audio.speaker.prot.enable=true
 persist.vendor.audio.latency_deep_buffer_speaker=29
 persist.vendor.audio.latency_deep_buffer_headset=29
 persist.vendor.audio.latency_deep_buffer_usb=-13
@@ -100,38 +101,27 @@ vendor.voice.path.for.pcm.voip=true
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
-bluetooth.hardware.power.idle_cur_ma=6
-bluetooth.hardware.power.operating_voltage_mv=3700
-bluetooth.hardware.power.rx_cur_ma=28
-bluetooth.hardware.power.tx_cur_ma=36
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.asha.central.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
-bluetooth.profile.bap.broadcast.assist.enabled?=true
-bluetooth.profile.bap.unicast.client.enabled?=true
 bluetooth.profile.bas.client.enabled?=true
-bluetooth.profile.csip.set_coordinator.enabled?=true
 bluetooth.profile.gatt.enabled?=true
-bluetooth.profile.hap.client.enabled?=true
 bluetooth.profile.hfp.ag.enabled?=true
 bluetooth.profile.hid.device.enabled?=true
 bluetooth.profile.hid.host.enabled?=true
 bluetooth.profile.map.server.enabled?=true
-bluetooth.profile.mcp.server.enabled?=true
 bluetooth.profile.opp.enabled?=true
 bluetooth.profile.pan.nap.enabled?=true
 bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
-bluetooth.profile.ccp.server.enabled?=true
-bluetooth.profile.vcp.controller.enabled?=true
 persist.bluetooth.a2dp_offload.disabled=false
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
-vendor.qcom.bluetooth.soc=hastings
-persist.vendor.qcom.bluetooth.soc=hastings
+vendor.qcom.bluetooth.soc=cherokee
+persist.vendor.qcom.bluetooth.soc=cherokee
 ro.vendor.bluetooth.wipower=false
 ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bt.bdaddr_path=/data/vendor/etc/bluetooth_bdaddr
@@ -157,15 +147,18 @@ ro.vendor.display.cabl=0
 ro.surface_flinger.use_color_management=true
 ro.surface_flinger.has_wide_color_display=true
 vendor.display.disable_scaler=0
+vendor.display.disable_inline_rotator=1
+vendor.display.disable_decimation=1
+vendor.display.enable_null_display=0
 vendor.display.disable_excl_rect=0
-vendor.display.disable_excl_rect_partial_fb=1
 vendor.display.comp_mask=0
-vendor.display.enable_posted_start_dyn=1
+vendor.display.enable_default_color_mode=1
 vendor.display.enable_optimize_refresh=1
-vendor.display.disable_offline_rotator=1
+vendor.display.disable_ui_3d_tonemap=1
 vendor.display.enable_async_powermode=0
 vendor.display.disable_hw_recovery_dump=1
-vendor.display.use_smooth_motion=0
+vendor.display.dataspace_saturation_matrix=1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0
+vendor.gralloc.disable_ubwc=0
 
 # DRM
 drm.service.enabled=true
@@ -181,8 +174,10 @@ persist.backup.ntpServer=0.pool.ntp.org
 
 # Graphics
 debug.egl.hw=0
+debug.mdpcomp.logs=0
 debug.sf.hw=0
 debug.sf.latch_unsignaled=1
+persist.demo.hdmirotationlock=false
 persist.sys.sf.color_saturation=1.0
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
@@ -197,6 +192,7 @@ ro.surface_flinger.set_touch_timer_ms=4000
 ro.surface_flinger.use_color_management=true
 ro.surface_flinger.wcg_composition_dataspace=143261696
 ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.msmnile.api30
+vendor.gralloc.disable_ubwc=0
 
 # Keystore
 ro.hardware.keystore_desede=true
@@ -216,7 +212,7 @@ vendor.pasr.activemode.enabled=true
 ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
-ro.telephony.default_network=22,22
+ro.telephony.default_network=9,9
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.sib16_support=1
 persist.vendor.radio.custom_ecc=1
@@ -226,30 +222,21 @@ persist.vendor.radio.report_codec=1
 persist.vendor.radio.add_power_save=1
 persist.vendor.radio.mt_sms_ack=19
 persist.vendor.radio.manual_nw_rej_ct=1
+persist.vendor.radio.vdp_on_ims_cap=1
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.oem_socket=true
 persist.vendor.radio.enableadvancedscan=true
+persist.vendor.radio.wait_for_pbm=true
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ro.com.android.dataroaming=true
 
 # Sensors
-persist.vendor.sensors.sync_request=true
-persist.vendor.sensors.allow_non_default_discovery=true
+persist.vendor.sensors.direct_channel=true
 
 # shutdown
 sys.vendor.shutdown.waittime=500
 
-# USB
-vendor.usb.diag.func.name=diag
-vendor.usb.dpl.inst.name=dpl
-vendor.usb.qdss.inst.name=qdss
-vendor.usb.rmnet.func.name=gsi
-vendor.usb.rmnet.inst.name=rmnet
-vendor.usb.rndis.func.name=gsi
-vendor.usb.use_ffs_mtp=0
-vendor.usb.use_gadget_hal=0
-
 # Wifi
 wifi.aware.interface=wifi-aware0
-
+persist.vendor.data.iwlan.enable=true
