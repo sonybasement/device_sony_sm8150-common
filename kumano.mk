@@ -263,8 +263,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
     vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0.vendor 
-#   vendor.semc.hardware.display@2.2.vendor
+    vendor.qti.hardware.display.mapper@4.0.vendor \
+    vendor.semc.hardware.display@1.0.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -427,8 +427,8 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge
 
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) 
-    #hardware/sony
+    $(LOCAL_PATH) \
+    hardware/sony
 
 # Set fdsan to the warn_once severity level
 PRODUCT_PROPERTY_OVERRIDES += \
