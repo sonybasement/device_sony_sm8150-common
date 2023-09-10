@@ -1203,11 +1203,14 @@ vendor/lib/vendor.qti.data.slm@1.0.so
 # Secd
 lib/vendor.somc.hardware.miscta@1.0.so:vendor/lib/vendor.somc.hardware.miscta@1.0.so
 lib64/vendor.somc.hardware.miscta@1.0.so:vendor/lib64/vendor.somc.hardware.miscta@1.0.so
-system/lib/libMiscTaWrapper.so:vendor/lib/libMiscTaWrapper.so
-system/lib64/libMiscTaWrapper.so:vendor/lib64/libMiscTaWrapper.so
+lib/libMiscTaWrapper.so:vendor/lib/libMiscTaWrapper.so
+lib64/libMiscTaWrapper.so:vendor/lib64/libMiscTaWrapper.so
 vendor/bin/hw/vendor.somc.hardware.miscta@1.0-service
 vendor/bin/hw/vendor.semc.hardware.secd@1.0-service
+vendor/bin/sct_service
+vendor/bin/vendor.qti.hardware.soter@1.0-provision
 vendor/etc/init/init.taqmi.rc
+vendor/etc/init/sct_service.rc
 vendor/etc/init/vendor.semc.hardware.secd@1.0-service.rc
 vendor/etc/init/vendor.somc.hardware.miscta@1.0-service.rc
 vendor/lib/libdevice_security_vendor.so
