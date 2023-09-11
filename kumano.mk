@@ -29,6 +29,14 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_PACKAGES += \
+    CarrierConfigResCommon \
+    SonyKumanoFrameworksResCommon \
+    SonyKumanoSettingsProviderOverlayCommon \
+    SonyKumanoSettingsResCommon \
+    SonyKumanoSystemUIResCommon \
+    SonyKumanoTelephonyResCommon \
+    WifiResCommon
 
 # Permissions
 PRODUCT_COPY_FILES += \
