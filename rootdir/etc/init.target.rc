@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
 # Copyright (C) 2018 Sony Mobile Communications Inc.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -132,7 +132,7 @@ on property:vendor.usb.controller=*
     setprop sys.usb.controller ${vendor.usb.controller}
 
 #Load WLAN driver
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+    insmod /vendor/lib/modules/qca_cld3_wlan.ko country_code=${ro.boot.wificountrycode}
 
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
@@ -193,12 +193,15 @@ service vendor.lowi /vendor/bin/sscrpcd
 
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
-    group system wakelock oem_2997 oem_2993
+    group system wakelock vendor_tad vendor_trimarea
     disabled
 
 service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
     class main
     oneshot
+
+#on property:vold.decrypt=trigger_restart_framework
+#    start cnss_diag
 
 service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
     class main
@@ -212,3 +215,21 @@ service vendor.energy-awareness /vendor/bin/energy-awareness
     user system
     group system
     oneshot
+
+service dcvs-sh /vendor/bin/init.qti.dcvs.sh
+    class late_start
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:vendor.dcvs.prop=1
+   start dcvs-sh
+
+service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0-service
+    override
+    class hal
+    interface android.hardware.contexthub@1.0::IContexthub default
+    user system
+    group system
+    disabled

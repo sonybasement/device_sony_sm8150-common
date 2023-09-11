@@ -208,7 +208,6 @@ PRODUCT_PACKAGES += \
 
 # Common init scripts
 PRODUCT_PACKAGES += \
-    init_thermal.sh \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
@@ -225,7 +224,10 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.qti.ufs.rc \
     init.qti.chg_policy.sh \
+    init.qti.dcvs.sh \
+    init.qti.qcv.sh \
     qca6234-service.sh \
     init.recovery.qcom.rc \
     init.target.rc \
