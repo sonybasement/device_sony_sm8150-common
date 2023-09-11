@@ -239,24 +239,21 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libdisplayconfig.qti \
-    libqdMetaData \
-    libtinyxml \
-    libvulkan \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    gralloc.msmnile \
     hwcomposer.msmnile \
+    gralloc.msmnile \
+    memtrack.msmnile \
     libdisplayconfig.qti \
-    libdisplayconfig.system.qti \
     libqdMetaData \
     libqdMetaData.system \
     libsdmcore \
     libsdmutils \
-    memtrack.msmnile \
+    libtinyxml \
+    libvulkan \
     vendor.display.config@1.5 \
     vendor.display.config@1.11.vendor \
     vendor.display.config@2.0 \
