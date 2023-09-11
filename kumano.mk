@@ -345,10 +345,6 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libc2dcolorconvert 
 
-# Light
-PRODUCT_PACKAGES += \
-    android.hardware.lights-service.sony_kumano
-
 # LiveDisplay
 # PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.1-service.sony
@@ -426,11 +422,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Set fdsan to the warn_once severity level
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.fdsan=warn_once
-
-# Shim
-PRODUCT_PACKAGES += \
-    android.hardware.light-V1-ndk_platform.vendor \
-    android.hidl.base@1.0.vendor
 
 # Telephony
 PRODUCT_PACKAGES += \
