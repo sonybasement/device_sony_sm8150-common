@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
+    android.hardware.bluetooth.audio-impl \
     android.hardware.audio.service \
     android.hardware.bluetooth.audio@2.1-impl \
     android.hardware.soundtrigger@2.1-impl \
@@ -163,11 +164,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml 
-    
-# AuthSecret
-PRODUCT_PACKAGES += \
-    android.hardware.authsecret@1.0.vendor \
-    android.hardware.authsecret@1.0-service
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -189,7 +185,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0.vendor \
     android.hardware.camera.device@3.5.vendor \
-    android.hardware.camera.provider@2.4.vendor \
+    android.hardware.camera.provider@2.6.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor \
     libcamera2ndk_vendor \
     libdng_sdk.vendor \
@@ -292,7 +288,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1.vendor
 
+# GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0.vendor \
     android.hardware.gnss.measurement_corrections@1.1.vendor \
     android.hardware.gnss.visibility_control@1.0.vendor \
     android.hardware.gnss@2.1.vendor
@@ -350,6 +348,11 @@ PRODUCT_PACKAGES += \
     libavservices_minijail_vendor \
     libmm-omxcore \
     libc2dcolorconvert 
+
+# Light
+PRODUCT_PACKAGES += \
+    android.hardware.lights-service.sony_kumano \
+    android.hardware.light-V1-ndk_platform.vendor
 
 # LiveDisplay
 # PRODUCT_PACKAGES += \
@@ -419,6 +422,10 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service.multihal \
+    android.hardware.sensors@2.0-ScopedWakelock.vendor \
+    android.hardware.sensors@2.0.vendor \
+    android.frameworks.sensorservice@1.0 \
+    android.frameworks.sensorservice@1.0.vendor \
     libsensorndkbridge
 
 PRODUCT_SOONG_NAMESPACES += \
@@ -460,7 +467,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service-qti
+    android.hardware.usb@1.0-service
 
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/usb/etc
@@ -474,7 +481,11 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
-$(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # WiFi
 PRODUCT_PACKAGES += \

@@ -22,18 +22,18 @@
     <hal format="hidl">
         <name>android.hardware.bluetooth.audio</name>
         <transport>hwbinder</transport>
-        <fqname>@2.0::IBluetoothAudioProvidersFactory/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.gnss</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IGnss/gnss_vendor</fqname>
-        <fqname>@1.1::IGnss/default</fqname>
+        <fqname>@2.1::IBluetoothAudioProvidersFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
         <transport>hwbinder</transport>
-        <fqname>@2.4::ICameraProvider/intenal/0</fqname>
+        <fqname>@2.4::ICameraProvider/internal/0</fqname>
+    </hal>
+    <hal format="hidl">
+      <name>android.hardware.drm</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.3::IDrmFactory/widevine</fqname>
+      <fqname>@1.3::ICryptoFactory/widevine</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
@@ -41,9 +41,21 @@
         <fqname>@1.0::IGatekeeper/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.gnss</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IGnss/gnss_vendor</fqname>
+        <fqname>@1.1::IGnss/default</fqname>
+        <fqname>@2.0::IGnss/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
-        <fqname>@4.0::IKeymasterDevice/default</fqname>
+        <fqname>@4.1::IKeymasterDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.media.c2</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IComponentStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -66,18 +78,23 @@
         <transport>hwbinder</transport>
         <fqname>@1.2::ISap/slot1</fqname>
         <fqname>@1.2::ISap/slot2</fqname>
-        <fqname>@1.4::IRadio/slot1</fqname>
-        <fqname>@1.4::IRadio/slot2</fqname>
+        <fqname>@1.5::IRadio/slot1</fqname>
+        <fqname>@1.5::IRadio/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <fqname>@1.1::IRadioConfig/default</fqname>
+        <fqname>@1.2::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
         <fqname>@1.0::IDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.secure_element</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.2::ISecureElement/SIM1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.secure_element</name>
@@ -91,11 +108,6 @@
         <fqname>@2.1::ISoundTriggerHw/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>com.qualcomm.qti.dpm.api</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IdpmQmi/dpmQmiService</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.tetheroffload.config</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IOffloadConfig/default</fqname>
@@ -104,6 +116,11 @@
         <name>android.hardware.tetheroffload.control</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IOffloadControl/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>com.qualcomm.qti.dpm.api</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IdpmQmi/dpmQmiService</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
@@ -126,26 +143,14 @@
         <fqname>@1.0::IDisplayPostproc/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.authsecret</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IAuthSecret/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.egistec.hardware.fingerprint</name>
         <transport>hwbinder</transport>
         <fqname>@4.0::IBiometricsFingerprintRbs/default</fqname>
     </hal>
-    <manifest version="1.0" type="device">
-        <hal format="aidl">
-            <name>android.hardware.light</name>
-            <transport>hwbinder</transport>
-            <fqname>ILights/default</fqname>
-        </hal>
-    </manifest>
     <hal format="hidl">
         <name>vendor.nxp.nxpnfc</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::INxpNfc/default</fqname>
+        <fqname>@2.0::INxpNfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
@@ -153,20 +158,14 @@
         <fqname>@2.1::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.gnss</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.2::ILocHidlGnss/gnss_vendor</fqname>
-    </hal>
-    <hal format="hidl">
       <name>vendor.qti.esepowermanager</name>
       <transport>hwbinder</transport>
       <fqname>@1.1::IEsePowerManager/default</fqname>
     </hal>
     <hal format="hidl">
-      <name>android.hardware.drm</name>
-      <transport>hwbinder</transport>
-      <fqname>@1.3::IDrmFactory/widevine</fqname>
-      <fqname>@1.3::ICryptoFactory/widevine</fqname>
+        <name>vendor.qti.gnss</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.2::ILocHidlGnss/gnss_vendor</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.audiohalext</name>
@@ -174,9 +173,19 @@
         <fqname>@1.0::IAudioHalExt/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.bluetooth_audio</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.0::IBluetoothAudioProvidersFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
         <transport>hwbinder</transport>
         <fqname>@1.1::IBluetoothSar/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.btconfigstore</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.0::IBTConfigStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.cacert</name>
@@ -230,15 +239,14 @@
         <fqname>@1.1::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.fm</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IFmHci/default</fqname>
+    </hal>
+    <hal format="hidl">
       <name>vendor.qti.hardware.iop</name>
       <transport>hwbinder</transport>
       <fqname>@2.0::IIop/default</fqname>
-    </hal>
-    <hal format="hidl">
-      <name>vendor.semc.system.idd</name>
-      <transport>hwbinder</transport>
-      <fqname>@1.0::IIdd/default</fqname>
-      <fqname>@1.0::IIdd/logreader</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.perf</name>
@@ -359,11 +367,6 @@
         <fqname>@3.0::IRTPService/imsrtpservice</fqname>
     </hal>
     <hal format="hidl">
-      <name>vendor.somc.hardware.security.secd</name>
-      <transport>hwbinder</transport>
-      <fqname>@1.0::IDeviceSecurity/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.semc.hardware.charger</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::ICharger/default</fqname>
@@ -374,30 +377,36 @@
         <fqname>@1.0::IDisplay/default</fqname>
     </hal>
     <hal format="hidl">
+      <name>vendor.semc.hardware.secd</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.0::IDeviceSecurity/default</fqname>
+    </hal>
+    <hal format="hidl">
+      <name>vendor.semc.system.idd</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.0::IIdd/default</fqname>
+      <fqname>@1.0::IIdd/logreader</fqname>
+    </hal>
+    <hal format="hidl">
+      <name>vendor.somc.hardware.camera.provider</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.0::IVendorSomcCameraProvider/internal/0</fqname>
+    </hal>
+    <hal format="hidl">
+      <name>vendor.somc.hardware.security.secd</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.0::IDeviceSecurity/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.somc.hardware.miscta</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IMisctaGlobal/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.fm</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IFmHci/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.btconfigstore</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.0::IBTConfigStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.somc.hardware.radio</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::ISomcHook/somchook</fqname>
         <fqname>@1.0::ISomcHook/somchook2</fqname>
-    </hal>
-    <hal format="hidl">
-      <name>vendor.semc.hardware.secd</name>
-      <transport>hwbinder</transport>
-      <fqname>@1.0::IDeviceSecurity/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.somc.hardware.swiqi</name>

@@ -148,7 +148,6 @@ vendor/lib/modules/audio_wcd_core.ko
 vendor/lib/modules/audio_mbhc.ko
 vendor/lib/modules/audio_q6_notifier.ko
 vendor/lib/modules/audio_usf.ko
-vendor/lib/modules/audio_wcd_cpe.ko
 vendor/lib/modules/modules.load
 vendor/lib/modules/modules.alias
 
