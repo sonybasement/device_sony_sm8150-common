@@ -268,11 +268,14 @@ vendor/lib/camera/systemdefault.bin
 vendor/lib/camera/titan17x_usecases.bin
 vendor/lib/hw/camera.qcom.so
 vendor/lib/libSNPE.so
+vendor/lib/libarcsoft_hdr_adapter.so
+vendor/lib/libarcsoft_low_light_hdr.so
 vendor/lib/libc++_shared.so
 vendor/lib/libcacao_common.so
 vendor/lib/libcacao_process_ctrl.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libcamera_nn_stub.so
+vendor/lib/libcammw.so
 vendor/lib/libcammw_util.so
 vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdalgov8.so
@@ -280,8 +283,13 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libexcal_core.so
+vendor/lib/libexcal_system.so
+vendor/lib/libhigh_dynamic_range.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_faceproc2.so
+vendor/lib/libmorpho_dual_camera.so
+vendor/lib/libmpbase.so
 vendor/lib/libsomc_alfortlpserv.so
 vendor/lib/libsomc_angelpie.so
 vendor/lib/libsomc_angelpie_impl.so
@@ -378,6 +386,7 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libcacao_common.so
 vendor/lib64/libcamera_nn_stub.so
+vendor/lib64/libcammw_util.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdalgov8.so
 vendor/lib64/libcamxfdengine.so
@@ -386,7 +395,6 @@ vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
 vendor/lib64/libexcal_core.so
 vendor/lib64/libsomc_camerapal.so
-vendor/lib64/libsomc_thermal.so
 vendor/lib64/vendor.semc.hardware.extlight-V1-ndk_platform.so
 
 # Camera postprocessing
