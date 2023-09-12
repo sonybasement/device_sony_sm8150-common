@@ -10,6 +10,8 @@ allow hal_secd_default hidl_memory_hwservice:hwservice_manager find;
 
 get_prop(hal_secd_default, vendor_tee_listener_prop);
 
+allow hal_secd_default mnt_vendor_file:dir create_dir_perms;
+allow hal_secd_default mnt_vendor_file:file create_file_perms;
 allow hal_secd_default tee_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
 allow hal_secd_default tad_socket:sock_file write;
 allow hal_secd_default ion_device:chr_file { ioctl read getattr lock map open watch watch_reads };
