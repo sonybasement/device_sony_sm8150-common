@@ -200,6 +200,7 @@ ro.hardware.keystore_desede=true
 # Media
 debug.stagefright.omx_default_rank=0
 debug.stagefright.ccodec=1
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 # NFC
 ro.camera.notify_nfc=1
