@@ -183,6 +183,18 @@ vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
+# Camera (BraviaEngine)
+vendor/etc/be_movie_spc
+vendor/lib/libcacao_common.so
+vendor/lib/libcacao_process_ctrl.so
+vendor/lib/vendor.somc.hardware.camera.cacao@1.0.so
+vendor/lib/vendor.somc.hardware.camera.cacao@2.0.so
+vendor/lib/vendor.somc.hardware.camera.cacao@3.0.so
+vendor/lib/vendor.somc.hardware.camera.cacao@3.1.so
+vendor/lib/vendor.somc.hardware.camera.cacao@3.2.so
+vendor/lib/vendor.somc.hardware.camera.cacao@3.2-impl.so
+vendor/lib64/libcacao_common.so
+
 # Camera firmware
 vendor/firmware/CAMERA_ICP.elf
 
@@ -270,8 +282,6 @@ vendor/lib/libSNPE.so
 vendor/lib/libarcsoft_hdr_adapter.so
 vendor/lib/libarcsoft_low_light_hdr.so
 vendor/lib/libc++_shared.so
-vendor/lib/libcacao_common.so
-vendor/lib/libcacao_process_ctrl.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libcamera_nn_stub.so
 vendor/lib/libcammw.so
@@ -348,12 +358,6 @@ vendor/lib/vendor.somc.camera.device@3.3-impl.so
 vendor/lib/vendor.somc.camera.device@3.4-impl.so
 vendor/lib/vendor.somc.hardware.camera.device@1.0.so
 vendor/lib/vendor.somc.hardware.camera.provider@1.0.so
-vendor/lib/vendor.somc.hardware.camera.cacao@1.0.so
-vendor/lib/vendor.somc.hardware.camera.cacao@2.0.so
-vendor/lib/vendor.somc.hardware.camera.cacao@3.0.so
-vendor/lib/vendor.somc.hardware.camera.cacao@3.1.so
-vendor/lib/vendor.somc.hardware.camera.cacao@3.2-impl.so
-vendor/lib/vendor.somc.hardware.camera.cacao@3.2.so
 vendor/lib/vendor.semc.hardware.extlight-V1-ndk_platform.so
 vendor/lib64/camera/components/com.qti.camx.chiiqutils.so
 vendor/lib64/camera/components/com.qti.eisv2.so
@@ -383,7 +387,6 @@ vendor/lib64/camera/components/libdepthmapwrapper.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcacao_common.so
 vendor/lib64/libcamera_nn_stub.so
 vendor/lib64/libcammw_util.so
 vendor/lib64/libcamxfdalgov7.so
